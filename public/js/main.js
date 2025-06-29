@@ -1,4 +1,6 @@
-const API_BASE_URL = window.location.origin;
+const API_BASE_URL = window.location.origin.includes('localhost')
+    ? 'http://localhost:3000'
+    : 'https://client-quotation-app.onrender.com';
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- DOM Element References ---
