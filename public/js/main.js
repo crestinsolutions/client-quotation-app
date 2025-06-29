@@ -1,6 +1,4 @@
-const API_BASE_URL = window.location.origin.includes('localhost')
-    ? 'http://localhost:3000'
-    : 'https://my-quote-backend-q5i4.onrender.com';
+const API_BASE_URL = window.location.origin;
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- DOM Element References ---
@@ -206,8 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkLoginStatus = async () => { try { const response = await fetch(`${API_BASE_URL}/api/user`, { credentials: 'include' }); const data = await response.json(); updateUI(data.loggedIn, data.user); } catch (e) { console.error("Error during checkLoginStatus:", e); updateUI(false); } };
 
     // --- EVENT LISTENERS ---
-    if(loginBtn) loginBtn.addEventListener('click', () => { window.location.href = `${API_BASE_URL}/auth/google`; });
-    if(logoutBtn) logoutBtn.addEventListener('click', () => { window.location.href = `${API_BASE_URL}/auth/logout`; });
+   // if(loginBtn) loginBtn.addEventListener('click', () => { window.location.href = `${API_BASE_URL}/auth/google`; });
+    // if(logoutBtn) logoutBtn.addEventListener('click', () => { window.location.href = `${API_BASE_URL}/auth/logout`; });
 
     if (newQuoteBtn) { newQuoteBtn.addEventListener('click', () => { if (selectedProductsTbody.children.length > 0) { if (confirm("You have unsaved items. Are you sure you want to discard them and start a new quote?")) { resetQuotationWorkspace(); } } else { resetQuotationWorkspace(); } }); }
     if (savedQuotesHeader) { savedQuotesHeader.addEventListener('click', () => { const content = savedQuotesContent; savedQuotesHeader.classList.toggle('is-open'); if (content.style.maxHeight) { content.style.maxHeight = null; } else { content.style.maxHeight = content.scrollHeight + "px"; } }); }
