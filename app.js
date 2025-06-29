@@ -11,6 +11,8 @@ const nodemailer = require('nodemailer');
 const XLSX = require('xlsx');
 const html_to_pdf = require('html-pdf-node'); // This is required for PDF generation
 
+
+
 // Models
 const User = require('./models/Users');
 const Product = require('./models/Products');
@@ -71,7 +73,9 @@ function ensureAuth(req, res, next) { if (req.isAuthenticated()) return next(); 
 
 // --- AUTHENTICATION ROUTES ---
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: process.env.FRONTEND_URL || '/' }), (req, res) => { res.redirect(process.env.FRONTEND_URL || '/'); });
+app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: process.env.FRONTEND_URL || '/' }), (req, res) => { 
+console.log('Redirecting to FRONTEND_URL:', process.env.FRONTEND_URL);
+res.redirect(process.env.FRONTEND_URL || '/'); });
 app.get('/api/user', (req, res) => { if (req.user) { res.json({ loggedIn: true, user: req.user }); } else { res.json({ loggedIn: false }); } });
 app.get('/auth/logout', (req, res, next) => { req.logout((err) => { if (err) { return next(err); } req.session.destroy(() => res.redirect(process.env.FRONTEND_URL || '/')); }); });
 
