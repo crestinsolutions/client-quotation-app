@@ -258,3 +258,34 @@ input[type=number] { -moz-appearance: textfield; }
 .form-actions { margin-top: 2rem; text-align: right; border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
 #account-status-message, #email-status-message { margin-top: 1rem; text-align: right; font-weight: 500; }
 @media (max-width: 768px) { .two-column-layout { grid-template-columns: 1fr; gap: 1.5rem; } .modal-content { max-height: 85vh; width: 95%; } .modal-body { padding: 1.5rem; } }
+
+
+/* --- New Login Page Styles for Logo & Footer --- */
+
+.auth-image-panel {
+    /* This uses flexbox to position the items */
+    justify-content: space-between; /* Pushes logo/footer to top/bottom */
+    align-items: flex-start; /* Aligns items to the left */
+    padding: 3rem;
+}
+
+.auth-branding {
+    text-align: left; /* Aligns your main h2/p text to the left */
+}
+
+.login-logo-container img {
+    width: 180px;  /* Adjust the size of your logo as needed */
+    height: auto;
+    margin-bottom: 2rem; /* Adds some space below the logo */
+}
+
+.login-footer {
+    width: 100%; /* Makes the footer span the full width of the container */
+    font-size: 0.9rem;
+    color: var(--color-text-on-primary);
+    opacity: 0.8; /* Makes the footer text slightly transparent */
+}
+
+.login-footer p {
+    margin: 4px 0; /* Adds a little space between the address lines */
+}
