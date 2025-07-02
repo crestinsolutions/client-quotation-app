@@ -46,8 +46,9 @@ body {
     color: white;
     padding: 3rem;
     display: flex;
-    align-items: center; /* Center the content vertically */
+    /* The align-items line has been removed */
 }
+
 
 .panel-content {
     display: flex;
